@@ -201,20 +201,31 @@ st.markdown(
 )
 
 # ── Demo Mode Banner ──────────────────────────────────────────
+from llm_client import is_llm_available
+_llm_on = is_llm_available()
+_banner_dot = "🟢" if _llm_on else "🟡"
+_banner_status = "FOUNDRY IQ LIVE" if _llm_on else "DEMO MODE"
+_banner_color = "#a78bfa" if _llm_on else "#4ade80"
+_banner_message = (
+    "Live LLM synthesis active · Azure AI Foundry / GitHub Models · "
+    "All employee data is synthetic · Reasoning grounded in Foundry IQ Ethics KG"
+    if _llm_on else
+    "Running fully offline · All employee data is synthetic · "
+    "Foundry IQ Ethics KG pre-loaded · Set GITHUB_TOKEN to enable live LLM"
+)
 st.markdown(
-    """
+    f"""
 <div class="demo-banner">
-  <span style="font-size: 15px;">🟢</span>
+  <span style="font-size: 15px;">{_banner_dot}</span>
   <div style="flex: 1;">
-    <span style="color:#4ade80; font-weight:600; font-size:12px;
-          letter-spacing:0.05em; text-transform:uppercase;">Demo Mode</span>
+    <span style="color:{_banner_color}; font-weight:600; font-size:12px;
+          letter-spacing:0.05em; text-transform:uppercase;">{_banner_status}</span>
     <span style="color:#94a3b8; font-size:12px; margin-left:10px;">
-      Running fully offline · All employee data is synthetic ·
-      Foundry IQ Ethics KG pre-loaded · No credentials required
+      {_banner_message}
     </span>
   </div>
   <span style="font-family: 'JetBrains Mono', monospace; color:#475569; font-size:11px;">
-    v1.0 · 4 agents · 6 ethical rules · 6 mitigations
+    v1.1 · 4 agents · 6 ethical rules · 6 mitigations
   </span>
 </div>
 """,
@@ -297,12 +308,27 @@ if run_btn:
     risk_class = "verdict-critical" if trans_result["risk_level"] == "CRITICAL" else (
         "verdict-high" if trans_result["risk_level"] in ["HIGH", "MODERATE"] else "verdict-low"
     )
+    llm_badge = ""
+    if trans_result.get("llm_powered"):
+        llm_badge = (
+            '<span style="display:inline-block;padding:2px 8px;border-radius:10px;'
+            'background:rgba(167,139,250,0.18);border:1px solid rgba(167,139,250,0.4);'
+            'color:#a78bfa;font-size:10px;font-weight:600;letter-spacing:0.05em;'
+            'margin-left:8px;">⬡ FOUNDRY IQ LIVE</span>'
+        )
+    else:
+        llm_badge = (
+            '<span style="display:inline-block;padding:2px 8px;border-radius:10px;'
+            'background:rgba(148,163,184,0.1);border:1px solid rgba(148,163,184,0.25);'
+            'color:#64748b;font-size:10px;font-weight:600;letter-spacing:0.05em;'
+            'margin-left:8px;">TEMPLATED · OFFLINE</span>'
+        )
     st.markdown(
         f"""
 <div class="{risk_class}">
   <div style="font-size:11px; letter-spacing:2px; color:#94a3b8;
        text-transform:uppercase; margin-bottom:6px;">
-    🛡️ Foundry Sentinel — Executive Verdict
+    🛡️ Foundry Sentinel — Executive Verdict {llm_badge}
   </div>
   <div style="font-size:16px; color:#e2e8f0; line-height:1.6;">
     {trans_result['executive_verdict']}
