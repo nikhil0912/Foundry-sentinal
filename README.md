@@ -5,28 +5,6 @@
 
 ![Foundry Sentinel Banner](banner.png)
 
-[![Live Demo](https://img.shields.io/badge/🚀%20Live%20Demo-foundry--sentinal.streamlit.app-FF4B4B?style=for-the-badge)](https://foundry-sentinal.streamlit.app/)
-[![Tests](https://img.shields.io/badge/tests-78%2F78%20passing-brightgreen?style=for-the-badge)]()
-[![License](https://img.shields.io/badge/license-MIT-blue?style=for-the-badge)]()
-[![Built with](https://img.shields.io/badge/built%20with-GitHub%20Copilot-4ade80?style=for-the-badge)]()
-
-> 🚀 **[Try the live demo →](https://foundry-sentinal.streamlit.app/)** — no setup required
-
----
-
-## 📸 Dashboard Screenshots
-
-### Executive Verdict — CRITICAL Risk Detection
-![Executive Verdict](screenshot_1_verdict.png)
-
-### Agent 1 — Statistical Bias Profiling
-![Data Profiler](screenshot_2_profiler.png)
-
-### Agent 2 — Foundry IQ Ethical Rule Violations
-![Violations](screenshot_3_violations.png)
-
-### Agent 3 — Prioritised Action Plan
-![Action Plan](screenshot_4_action_plan.png)
 ---
 
 ## 🌌 The Idea
@@ -104,7 +82,7 @@ for the exact prompts used to generate:
 - The graph traversal + rule matching logic (Audit)
 - The counterfactual generation logic (Transparency)
 - The cosmic dark Streamlit UI
-- The 78-test evaluation suite
+- The 87-test evaluation suite
 
 ---
 
@@ -146,7 +124,7 @@ Open `architecture.html` for the full visual diagram.
 ```
 foundry-sentinel/
 ├── app.py                          # Streamlit dashboard
-├── eval.py                         # 78-test evaluation suite
+├── eval.py                         # 87-test evaluation suite
 ├── architecture.html               # Architecture diagram
 ├── banner.html                     # Project banner
 ├── README.md
@@ -182,6 +160,26 @@ streamlit run app.py
 
 Open `http://localhost:8501` → click **▶️ Run Full Sentinel Pipeline** in the sidebar.
 
+### 🔥 Enable Live Azure AI Foundry Reasoning (Optional)
+
+Foundry Sentinel runs in **two modes**:
+
+| Mode | When | How |
+|---|---|---|
+| 🟢 **Demo Mode** (default) | No credentials | Templated executive verdict. Everything still works offline. |
+| ⬡ **Foundry IQ Live** | GITHUB_TOKEN set | Agent 3 synthesises executive verdict via real LLM call to Azure AI Inference / GitHub Models (gpt-4o-mini). |
+
+To enable live Foundry IQ reasoning:
+
+1. Get a free GitHub personal access token at [github.com/settings/tokens](https://github.com/settings/tokens) (no scopes needed for public model access)
+2. Create a `.env` file in the project root:
+   ```
+   GITHUB_TOKEN=ghp_your_token_here
+   ```
+3. Restart the Streamlit app — the banner will switch from 🟢 Demo Mode to ⬡ Foundry IQ Live
+
+On Streamlit Cloud, set `GITHUB_TOKEN` in **Manage app → Settings → Secrets**.
+
 ---
 
 ## 🧪 Run the Evaluation Suite
@@ -190,9 +188,9 @@ Open `http://localhost:8501` → click **▶️ Run Full Sentinel Pipeline** in 
 python eval.py
 ```
 
-**Expected:** `78/78 tests passing, 100% score`
+**Expected:** `87/87 tests passing, 100% score`
 
-Tests cover: data integrity, all 4 agents, KG queries, Foundry IQ integration, fairness metrics, edge cases, Responsible AI guardrails, determinism.
+Tests cover: data integrity, all 4 agents, KG queries, Foundry IQ integration (KG + LLM client), fairness metrics, edge cases, Responsible AI guardrails, determinism.
 
 ---
 
