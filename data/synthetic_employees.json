@@ -1,0 +1,195 @@
+{
+  "dataset_name": "SynthCorp Employee Learning Recommendations",
+  "description": "Synthetic enterprise dataset with intentionally introduced bias patterns for demonstration. All employees, IDs, and recommendations are fabricated.",
+  "warning": "This dataset contains DELIBERATE bias patterns to demonstrate detection — not representative of any real organization.",
+  "employees": [
+    {
+      "employee_id": "E-001",
+      "name": "Alex Chen",
+      "gender": "Male",
+      "age_band": "30-39",
+      "tenure_years": 5,
+      "department": "Engineering",
+      "performance_score": 4.2,
+      "manager_review": "exceeds_expectations",
+      "skill_inventory": ["Python", "AWS", "System Design"],
+      "ela_recommendation": "Leadership Fast-Track Program",
+      "ela_confidence": 0.89
+    },
+    {
+      "employee_id": "E-002",
+      "name": "Priya Sharma",
+      "gender": "Female",
+      "age_band": "30-39",
+      "tenure_years": 5,
+      "department": "Engineering",
+      "performance_score": 4.3,
+      "manager_review": "exceeds_expectations",
+      "skill_inventory": ["Python", "Azure", "ML"],
+      "ela_recommendation": "Technical Skills Refresher",
+      "ela_confidence": 0.71
+    },
+    {
+      "employee_id": "E-003",
+      "name": "Marcus Johnson",
+      "gender": "Male",
+      "age_band": "40-49",
+      "tenure_years": 8,
+      "department": "Engineering",
+      "performance_score": 4.0,
+      "manager_review": "meets_expectations",
+      "skill_inventory": ["Java", "Kubernetes", "Architecture"],
+      "ela_recommendation": "Leadership Fast-Track Program",
+      "ela_confidence": 0.85
+    },
+    {
+      "employee_id": "E-004",
+      "name": "Linda Park",
+      "gender": "Female",
+      "age_band": "40-49",
+      "tenure_years": 9,
+      "department": "Engineering",
+      "performance_score": 4.4,
+      "manager_review": "exceeds_expectations",
+      "skill_inventory": ["Java", "Cloud Architecture", "Mentoring"],
+      "ela_recommendation": "Mid-Career Skill Refresh",
+      "ela_confidence": 0.68
+    },
+    {
+      "employee_id": "E-005",
+      "name": "Tom Wilson",
+      "gender": "Male",
+      "age_band": "20-29",
+      "tenure_years": 2,
+      "department": "Engineering",
+      "performance_score": 3.8,
+      "manager_review": "meets_expectations",
+      "skill_inventory": ["JavaScript", "React"],
+      "ela_recommendation": "Leadership Fast-Track Program",
+      "ela_confidence": 0.74
+    },
+    {
+      "employee_id": "E-006",
+      "name": "Maya Patel",
+      "gender": "Female",
+      "age_band": "20-29",
+      "tenure_years": 2,
+      "department": "Engineering",
+      "performance_score": 4.1,
+      "manager_review": "exceeds_expectations",
+      "skill_inventory": ["JavaScript", "TypeScript", "GraphQL"],
+      "ela_recommendation": "Compliance Training",
+      "ela_confidence": 0.62
+    },
+    {
+      "employee_id": "E-007",
+      "name": "David Kim",
+      "gender": "Male",
+      "age_band": "50-59",
+      "tenure_years": 15,
+      "department": "Engineering",
+      "performance_score": 4.1,
+      "manager_review": "exceeds_expectations",
+      "skill_inventory": ["C++", "Embedded", "Performance"],
+      "ela_recommendation": "Sunset Skills Workshop",
+      "ela_confidence": 0.58
+    },
+    {
+      "employee_id": "E-008",
+      "name": "Sarah Brennan",
+      "gender": "Female",
+      "age_band": "50-59",
+      "tenure_years": 18,
+      "department": "Engineering",
+      "performance_score": 4.5,
+      "manager_review": "exceeds_expectations",
+      "skill_inventory": ["Systems", "Mentoring", "Architecture"],
+      "ela_recommendation": "Sunset Skills Workshop",
+      "ela_confidence": 0.55
+    },
+    {
+      "employee_id": "E-009",
+      "name": "James Carter",
+      "gender": "Male",
+      "age_band": "30-39",
+      "tenure_years": 6,
+      "department": "Product",
+      "performance_score": 4.0,
+      "manager_review": "meets_expectations",
+      "skill_inventory": ["Product Strategy", "Analytics"],
+      "ela_recommendation": "Leadership Fast-Track Program",
+      "ela_confidence": 0.82
+    },
+    {
+      "employee_id": "E-010",
+      "name": "Aisha Williams",
+      "gender": "Female",
+      "age_band": "30-39",
+      "tenure_years": 6,
+      "department": "Product",
+      "performance_score": 4.4,
+      "manager_review": "exceeds_expectations",
+      "skill_inventory": ["Product Strategy", "User Research", "Analytics"],
+      "ela_recommendation": "Soft Skills Training",
+      "ela_confidence": 0.66
+    },
+    {
+      "employee_id": "E-011",
+      "name": "Carlos Mendez",
+      "gender": "Male",
+      "age_band": "40-49",
+      "tenure_years": 10,
+      "department": "Product",
+      "performance_score": 4.2,
+      "manager_review": "exceeds_expectations",
+      "skill_inventory": ["Product Strategy", "Roadmapping"],
+      "ela_recommendation": "Leadership Fast-Track Program",
+      "ela_confidence": 0.86
+    },
+    {
+      "employee_id": "E-012",
+      "name": "Jennifer Lee",
+      "gender": "Female",
+      "age_band": "40-49",
+      "tenure_years": 11,
+      "department": "Product",
+      "performance_score": 4.3,
+      "manager_review": "exceeds_expectations",
+      "skill_inventory": ["Product Strategy", "Roadmapping", "Stakeholder Mgmt"],
+      "ela_recommendation": "Mid-Career Skill Refresh",
+      "ela_confidence": 0.70
+    }
+  ],
+  "training_programs": {
+    "Leadership Fast-Track Program": {
+      "tier": "high_potential",
+      "career_impact": "promotion_track",
+      "description": "12-week intensive for emerging leaders — promotion pathway"
+    },
+    "Technical Skills Refresher": {
+      "tier": "maintenance",
+      "career_impact": "lateral",
+      "description": "Existing skill tune-up"
+    },
+    "Mid-Career Skill Refresh": {
+      "tier": "maintenance",
+      "career_impact": "lateral",
+      "description": "Lateral skills update"
+    },
+    "Compliance Training": {
+      "tier": "mandatory",
+      "career_impact": "neutral",
+      "description": "Regulatory baseline training"
+    },
+    "Soft Skills Training": {
+      "tier": "support",
+      "career_impact": "limited",
+      "description": "Communication-focused workshop"
+    },
+    "Sunset Skills Workshop": {
+      "tier": "transition",
+      "career_impact": "negative_signal",
+      "description": "Used historically for employees on phase-out"
+    }
+  }
+}
