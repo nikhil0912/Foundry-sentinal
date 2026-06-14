@@ -1,0 +1,233 @@
+{
+  "knowledge_base_name": "Foundry IQ Ethical Reasoning Graph",
+  "description": "Synthetic representation of Microsoft Foundry IQ used as an ethical knowledge layer. Models Responsible AI principles, fairness metrics, contextual rules, and mitigation strategies as a queryable graph.",
+  "version": "1.0",
+  "ethical_principles": [
+    {
+      "id": "P01",
+      "name": "Non-Discrimination",
+      "definition": "AI decisions must not produce differential outcomes based on protected attributes (gender, age, race) without legitimate business justification.",
+      "applies_to": [
+        "hiring",
+        "promotion",
+        "training_allocation",
+        "compensation"
+      ],
+      "legal_backing": [
+        "EU AI Act Article 10",
+        "EEOC Guidelines",
+        "GDPR Article 22"
+      ],
+      "severity_if_violated": "critical"
+    },
+    {
+      "id": "P02",
+      "name": "Employee Growth Equity",
+      "definition": "All employees with comparable performance must receive comparable growth opportunities regardless of demographic attributes.",
+      "applies_to": [
+        "training_recommendations",
+        "career_pathing",
+        "mentorship_allocation"
+      ],
+      "legal_backing": [
+        "Equal Employment Opportunity Act"
+      ],
+      "severity_if_violated": "high"
+    },
+    {
+      "id": "P03",
+      "name": "Algorithmic Transparency",
+      "definition": "AI-driven decisions affecting employees must be explainable, auditable, and traceable to source data and reasoning logic.",
+      "applies_to": [
+        "all_employee_decisions"
+      ],
+      "legal_backing": [
+        "EU AI Act Article 13",
+        "GDPR Right to Explanation"
+      ],
+      "severity_if_violated": "high"
+    },
+    {
+      "id": "P04",
+      "name": "Human Oversight",
+      "designed_for": "high_impact_decisions",
+      "definition": "Decisions with significant career impact must include meaningful human review before being acted upon — AI cannot be the final arbiter.",
+      "applies_to": [
+        "promotion_track",
+        "termination_signals",
+        "leadership_selection"
+      ],
+      "legal_backing": [
+        "EU AI Act Article 14"
+      ],
+      "severity_if_violated": "critical"
+    },
+    {
+      "id": "P05",
+      "name": "Age Inclusivity",
+      "definition": "Decisions must not deprioritise employees based on age band, particularly for skill development and growth opportunities.",
+      "applies_to": [
+        "training_recommendations",
+        "career_pathing"
+      ],
+      "legal_backing": [
+        "ADEA — Age Discrimination in Employment Act"
+      ],
+      "severity_if_violated": "high"
+    }
+  ],
+  "fairness_metrics": [
+    {
+      "id": "M01",
+      "name": "Demographic Parity",
+      "definition": "Selection rate should be similar across protected groups.",
+      "formula": "P(decision=positive | group=A) ≈ P(decision=positive | group=B)",
+      "acceptable_threshold": "≤ 20% disparity",
+      "applies_to": [
+        "P01",
+        "P02",
+        "P05"
+      ]
+    },
+    {
+      "id": "M02",
+      "name": "Equal Opportunity",
+      "definition": "Among qualified candidates, selection rate should be equal across protected groups.",
+      "formula": "P(decision=positive | qualified, group=A) ≈ P(decision=positive | qualified, group=B)",
+      "acceptable_threshold": "≤ 15% disparity among high performers",
+      "applies_to": [
+        "P02"
+      ]
+    },
+    {
+      "id": "M03",
+      "name": "Performance-Adjusted Disparity",
+      "definition": "Outcome disparity that persists after controlling for performance score.",
+      "formula": "Decision rate disparity | controlled for performance ≥ 4.0",
+      "acceptable_threshold": "≤ 10% residual disparity",
+      "applies_to": [
+        "P02",
+        "P05"
+      ]
+    }
+  ],
+  "contextual_rules": [
+    {
+      "id": "R01",
+      "rule": "IF a high-performer (score ≥ 4.0) is recommended a 'maintenance' or 'support' tier training program AND a same-department peer of different gender with lower performance is recommended a 'high_potential' tier program THEN flag potential violation of P02 (Employee Growth Equity).",
+      "principles_invoked": [
+        "P02"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "R02",
+      "rule": "IF demographic parity disparity across gender > 20% in 'high_potential' training recommendations THEN flag violation of P01 (Non-Discrimination).",
+      "principles_invoked": [
+        "P01"
+      ],
+      "severity": "critical"
+    },
+    {
+      "id": "R03",
+      "rule": "IF employees in age_band 50-59 with performance ≥ 4.0 are systematically recommended 'transition' tier programs THEN flag violation of P05 (Age Inclusivity) and P02.",
+      "principles_invoked": [
+        "P05",
+        "P02"
+      ],
+      "severity": "critical"
+    },
+    {
+      "id": "R04",
+      "rule": "IF a candidate decision has confidence < 0.65 AND career_impact is 'promotion_track' or 'negative_signal' THEN flag violation of P04 (Human Oversight) — must require human review.",
+      "principles_invoked": [
+        "P04"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "R05",
+      "rule": "IF the system cannot trace a decision back to specific input features and the rule logic that produced it THEN flag violation of P03 (Algorithmic Transparency).",
+      "principles_invoked": [
+        "P03"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "R06",
+      "rule": "IF performance-adjusted disparity (M03) > 10% between any two protected groups THEN flag violation of P02 with high confidence.",
+      "principles_invoked": [
+        "P02"
+      ],
+      "severity": "high"
+    }
+  ],
+  "mitigation_strategies": [
+    {
+      "id": "MIT01",
+      "name": "Demographic-Aware Reweighting",
+      "description": "Reweight the recommendation model so that performance — not demographic features — dominates the prediction.",
+      "applies_to_violations": [
+        "R01",
+        "R02",
+        "R06"
+      ],
+      "effort": "medium",
+      "tradeoff": "May slightly reduce overall accuracy in exchange for fairness."
+    },
+    {
+      "id": "MIT02",
+      "name": "Equal Opportunity Post-Processing",
+      "description": "Apply post-processing adjustments to equalise true positive rates across groups for high-impact decisions.",
+      "applies_to_violations": [
+        "R02",
+        "R06"
+      ],
+      "effort": "low",
+      "tradeoff": "Decisions become slightly less individualised but more fair across groups."
+    },
+    {
+      "id": "MIT03",
+      "name": "Age Band Audit and Override",
+      "description": "Require human approval for any 'transition' or 'sunset' tier recommendation involving employees aged 50+.",
+      "applies_to_violations": [
+        "R03"
+      ],
+      "effort": "low",
+      "tradeoff": "Slightly slower decision-making in this segment."
+    },
+    {
+      "id": "MIT04",
+      "name": "Human-in-the-Loop Confidence Gate",
+      "description": "Route all high-impact decisions with model confidence below 0.7 to a human reviewer before final allocation.",
+      "applies_to_violations": [
+        "R04"
+      ],
+      "effort": "low",
+      "tradeoff": "Increases human review workload in low-confidence cases."
+    },
+    {
+      "id": "MIT05",
+      "name": "Decision Trace Logging",
+      "description": "Log every input feature and rule applied for each decision into an immutable audit log accessible by HR and Compliance.",
+      "applies_to_violations": [
+        "R05"
+      ],
+      "effort": "medium",
+      "tradeoff": "Adds storage and pipeline complexity."
+    },
+    {
+      "id": "MIT06",
+      "name": "Counterfactual Validation",
+      "description": "Test each decision by hypothetically flipping the protected attribute (e.g., gender) and checking if the recommendation changes — if it does, flag for review.",
+      "applies_to_violations": [
+        "R01",
+        "R02",
+        "R03"
+      ],
+      "effort": "high",
+      "tradeoff": "Computationally expensive but provides strongest fairness guarantee."
+    }
+  ],
+  "synthetic_disclaimer": "All data, principles, and rules in this knowledge base are synthetic and crafted for demonstration only. In production, these would be governed by your organisation's RAI policy, legal team, and Microsoft Foundry IQ enterprise knowledge graph."
+}
