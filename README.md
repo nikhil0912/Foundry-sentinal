@@ -5,7 +5,7 @@
 
 ![Foundry Sentinel Banner](banner.png)
 
-[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://foundry-sentinal.streamlit.app/)
+[![Live Demo](https://img.shields.io/badge/🚀%20Live%20Demo-foundry--sentinal.streamlit.app-FF4B4B?style=for-the-badge)](https://foundry-sentinal.streamlit.app/)
 [![Tests](https://img.shields.io/badge/tests-78%2F78%20passing-brightgreen)]()
 [![License](https://img.shields.io/badge/license-MIT-blue)]()
 [![Built with](https://img.shields.io/badge/built%20with-GitHub%20Copilot-4ade80)]()
