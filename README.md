@@ -6,9 +6,9 @@
 ![Foundry Sentinel Banner](banner.png)
 
 [![Live Demo](https://img.shields.io/badge/🚀%20Live%20Demo-foundry--sentinal.streamlit.app-FF4B4B?style=for-the-badge)](https://foundry-sentinal.streamlit.app/)
-[![Tests](https://img.shields.io/badge/tests-78%2F78%20passing-brightgreen)]()
-[![License](https://img.shields.io/badge/license-MIT-blue)]()
-[![Built with](https://img.shields.io/badge/built%20with-GitHub%20Copilot-4ade80)]()
+[![Tests](https://img.shields.io/badge/tests-78%2F78%20passing-brightgreen?style=for-the-badge)]()
+[![License](https://img.shields.io/badge/license-MIT-blue?style=for-the-badge)]()
+[![Built with](https://img.shields.io/badge/built%20with-GitHub%20Copilot-4ade80?style=for-the-badge)]()
 
 > 🚀 **[Try the live demo →](https://foundry-sentinal.streamlit.app/)** — no setup required
 
