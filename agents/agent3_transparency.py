@@ -15,6 +15,7 @@ Reasoning pattern: Synthesis → Counterfactual → Recommendation
 from agents.agent2_audit import run as run_audit
 from agents.agent1_profiler import run as run_profiler
 from agents.agent0_ela import list_all_recommendations
+from llm_client import synthesize_executive_verdict, is_llm_available
 
 
 def _humanize_finding(violation: dict) -> dict:
@@ -207,7 +208,18 @@ def run(audit_report: dict = None, profiler_report: dict = None) -> dict:
     ]
 
     # ── Step 4: Build executive summary ────────────────────────────
-    if risk["level"] == "CRITICAL":
+    # Try LLM-powered synthesis first (Foundry IQ / GitHub Models)
+    llm_verdict, verdict_source = synthesize_executive_verdict(
+        risk_level=risk["level"],
+        risk_score=risk["score"],
+        violations=violations,
+        principles_touched=audit_report["principles_touched"],
+        counterfactuals=counterfactuals,
+    )
+
+    if llm_verdict:
+        executive_verdict = llm_verdict
+    elif risk["level"] == "CRITICAL":
         executive_verdict = (
             f"🛑 The Enterprise Learning Agent has been audited and assessed at "
             f"{risk['level']} ethical risk ({risk['score']}/100). "
@@ -268,9 +280,13 @@ def run(audit_report: dict = None, profiler_report: dict = None) -> dict:
         "prioritised_action_plan": action_plan,
         "affected_employees": affected,
         "human_review_required": risk["level"] in ["CRITICAL", "HIGH"],
+        "verdict_source": verdict_source,
+        "llm_powered": verdict_source == "foundry_iq_llm",
         "reasoning": reasoning,
         "citation": (
             "Findings derived from Foundry IQ Ethics KG + Data Profiler stats. "
+            "Executive verdict synthesised by Azure AI Foundry / GitHub Models "
+            "(gpt-4o-mini) when GITHUB_TOKEN is configured. "
             "Human stakeholders make all final decisions."
         ),
     }
