@@ -5,6 +5,29 @@
 
 ![Foundry Sentinel Banner](banner.png)
 
+[![Live Demo](https://img.shields.io/badge/🚀%20Live%20Demo-foundry--sentinal.streamlit.app-FF4B4B?style=for-the-badge)](https://foundry-sentinal.streamlit.app/)
+[![Tests](https://img.shields.io/badge/tests-87%2F87%20passing-brightgreen?style=for-the-badge)]()
+[![Foundry IQ](https://img.shields.io/badge/Foundry%20IQ-LLM%20%2B%20KG-a78bfa?style=for-the-badge)]()
+[![Built with](https://img.shields.io/badge/built%20with-GitHub%20Copilot-4ade80?style=for-the-badge)]()
+
+> 🚀 **[Try the live demo →](https://foundry-sentinal.streamlit.app/)** — no setup required
+
+---
+
+## 📸 Dashboard Screenshots
+
+### Executive Verdict — CRITICAL Risk Detection (⬡ Foundry IQ Live)
+![Executive Verdict](screenshot_1_verdict.png)
+
+### Agent 1 — Statistical Bias Profiling
+![Data Profiler](screenshot_2_profiler.png)
+
+### Agent 2 — Foundry IQ Ethical Rule Violations
+![Violations](screenshot_3_violations.png)
+
+### Agent 3 — Prioritised Action Plan
+![Action Plan](screenshot_4_action_plan.png)
+
 ---
 
 ## 🌌 The Idea
