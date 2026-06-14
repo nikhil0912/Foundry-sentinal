@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><title>Foundry Sentinel — Architecture</title>
+<style>body { margin:0; background:#000; display:flex; justify-content:center; align-items:center; min-height:100vh; padding:20px; }</style>
+</head><body>
+<svg viewBox="0 0 1200 780" xmlns="http://www.w3.org/2000/svg" width="1200" height="780">
+<defs>
+  <radialGradient id="bg" cx="50%" cy="50%" r="60%"><stop offset="0%" style="stop-color:#15151f"/><stop offset="100%" style="stop-color:#0a0a0f"/></radialGradient>
+  <linearGradient id="titleGrad" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" style="stop-color:#c7d2fe"/><stop offset="50%" style="stop-color:#a78bfa"/><stop offset="100%" style="stop-color:#4ade80"/></linearGradient>
+  <filter id="glow"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  <filter id="softGlow"><feGaussianBlur stdDeviation="2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  <marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#a78bfa"/></marker>
+  <marker id="arrG" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#4ade80"/></marker>
+</defs>
+
+<rect width="1200" height="780" fill="url(#bg)"/>
+
+<!-- grid -->
+<g opacity="0.04">
+<line x1="0" y1="120" x2="1200" y2="120" stroke="#a78bfa"/>
+<line x1="0" y1="240" x2="1200" y2="240" stroke="#a78bfa"/>
+<line x1="0" y1="380" x2="1200" y2="380" stroke="#a78bfa"/>
+<line x1="0" y1="520" x2="1200" y2="520" stroke="#a78bfa"/>
+<line x1="0" y1="640" x2="1200" y2="640" stroke="#a78bfa"/>
+<line x1="240" y1="0" x2="240" y2="780" stroke="#a78bfa"/>
+<line x1="480" y1="0" x2="480" y2="780" stroke="#a78bfa"/>
+<line x1="720" y1="0" x2="720" y2="780" stroke="#a78bfa"/>
+<line x1="960" y1="0" x2="960" y2="780" stroke="#a78bfa"/>
+</g>
+
+<!-- Title -->
+<text x="600" y="46" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="28" font-weight="700" fill="url(#titleGrad)" filter="url(#glow)">🛡️ Foundry Sentinel</text>
+<text x="600" y="68" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="13" fill="#94a3b8">Multi-Agent Responsible AI Assurance for Enterprise Learning</text>
+<text x="600" y="86" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="10" fill="#64748b" letter-spacing="3">REASONING AGENTS TRACK · MICROSOFT AGENTS LEAGUE 2026</text>
+
+<!-- ELA at top (UNDER AUDIT) -->
+<g transform="translate(380, 110)">
+  <rect x="0" y="0" width="440" height="68" rx="10" fill="rgba(239,68,68,0.08)" stroke="rgba(239,68,68,0.4)" stroke-width="1.5"/>
+  <text x="220" y="22" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="9" font-weight="700" fill="#ef4444" letter-spacing="2">⚠ SYSTEM UNDER AUDIT</text>
+  <text x="220" y="42" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="14" font-weight="600" fill="#e2e8f0">Agent 0 — Enterprise Learning Agent</text>
+  <text x="220" y="60" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="11" fill="#94a3b8">Produces (biased) training recommendations for 12 employees</text>
+</g>
+
+<!-- Arrow down -->
+<line x1="600" y1="178" x2="600" y2="208" stroke="#a78bfa" stroke-width="1.5" marker-end="url(#arr)"/>
+<text x="610" y="198" font-family="Inter,Arial,sans-serif" font-size="10" fill="#64748b">12 candidate decisions</text>
+
+<!-- Sentinel container -->
+<rect x="46" y="218" width="1108" height="312" rx="14" fill="rgba(167,139,250,0.03)" stroke="rgba(167,139,250,0.2)" stroke-width="1.5" stroke-dasharray="6,4"/>
+<text x="600" y="240" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="11" font-weight="700" fill="#a78bfa" letter-spacing="3">🛡️ FOUNDRY SENTINEL — RESPONSIBLE AI ASSURANCE LAYER</text>
+
+<!-- Agent 1: Data Profiler -->
+<g transform="translate(80, 270)">
+  <rect x="0" y="0" width="290" height="148" rx="10" fill="rgba(15,15,30,0.7)" stroke="#60a5fa" stroke-width="1.5"/>
+  <text x="145" y="22" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="9" font-weight="700" fill="#60a5fa" letter-spacing="2">AGENT 1 · DATA PROFILER</text>
+  <line x1="20" y1="32" x2="270" y2="32" stroke="rgba(96,165,250,0.2)"/>
+  <text x="145" y="52" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="12" fill="#e2e8f0" font-weight="600">Statistical Audit</text>
+  <text x="145" y="72" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="10" fill="#94a3b8">Pattern: Compute → Compare → Flag</text>
+  <text x="20" y="96" font-family="Inter,Arial,sans-serif" font-size="10" fill="#94a3b8">• Demographic parity rates</text>
+  <text x="20" y="112" font-family="Inter,Arial,sans-serif" font-size="10" fill="#94a3b8">• Equal-opportunity check</text>
+  <text x="20" y="128" font-family="Inter,Arial,sans-serif" font-size="10" fill="#94a3b8">• Intersectional analysis</text>
+  <text x="145" y="142" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="9" fill="#60a5fa" font-style="italic">→ Bias Profile Report</text>
+</g>
+
+<!-- Agent 2: Decision Audit (Foundry IQ-powered) -->
+<g transform="translate(450, 270)">
+  <rect x="0" y="0" width="300" height="148" rx="10" fill="rgba(15,15,30,0.7)" stroke="#a78bfa" stroke-width="2"/>
+  <text x="150" y="22" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="9" font-weight="700" fill="#a78bfa" letter-spacing="2">AGENT 2 · DECISION AUDIT</text>
+  <line x1="20" y1="32" x2="280" y2="32" stroke="rgba(167,139,250,0.2)"/>
+  <text x="150" y="52" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="12" fill="#e2e8f0" font-weight="600">⬡ Foundry IQ Reasoning</text>
+  <text x="150" y="72" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="10" fill="#94a3b8">Pattern: KG Traversal → Rule Match</text>
+  <text x="20" y="96" font-family="Inter,Arial,sans-serif" font-size="10" fill="#94a3b8">• Query 5 ethical principles</text>
+  <text x="20" y="112" font-family="Inter,Arial,sans-serif" font-size="10" fill="#94a3b8">• Evaluate 6 contextual rules</text>
+  <text x="20" y="128" font-family="Inter,Arial,sans-serif" font-size="10" fill="#94a3b8">• Compute composite risk score</text>
+  <text x="150" y="142" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="9" fill="#a78bfa" font-style="italic">→ Decision Audit Report</text>
+</g>
+
+<!-- Agent 3: Transparency -->
+<g transform="translate(830, 270)">
+  <rect x="0" y="0" width="290" height="148" rx="10" fill="rgba(15,15,30,0.7)" stroke="#4ade80" stroke-width="1.5"/>
+  <text x="145" y="22" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="9" font-weight="700" fill="#4ade80" letter-spacing="2">AGENT 3 · TRANSPARENCY</text>
+  <line x1="20" y1="32" x2="270" y2="32" stroke="rgba(74,222,128,0.2)"/>
+  <text x="145" y="52" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="12" fill="#e2e8f0" font-weight="600">Synthesis Layer</text>
+  <text x="145" y="72" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="10" fill="#94a3b8">Pattern: Synthesis → Counterfactual</text>
+  <text x="20" y="96" font-family="Inter,Arial,sans-serif" font-size="10" fill="#94a3b8">• Plain-language findings</text>
+  <text x="20" y="112" font-family="Inter,Arial,sans-serif" font-size="10" fill="#94a3b8">• Counterfactual "what-if"</text>
+  <text x="20" y="128" font-family="Inter,Arial,sans-serif" font-size="10" fill="#94a3b8">• Prioritised action plan</text>
+  <text x="145" y="142" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="9" fill="#4ade80" font-style="italic">→ Responsible AI Summary</text>
+</g>
+
+<!-- Agent arrows -->
+<line x1="370" y1="344" x2="448" y2="344" stroke="#a78bfa" stroke-width="1.5" marker-end="url(#arr)"/>
+<line x1="750" y1="344" x2="828" y2="344" stroke="#a78bfa" stroke-width="1.5" marker-end="url(#arr)"/>
+
+<!-- Foundry IQ KG -->
+<g transform="translate(80, 450)">
+  <rect x="0" y="0" width="1040" height="70" rx="10" fill="rgba(167,139,250,0.08)" stroke="rgba(167,139,250,0.4)" stroke-width="1.5"/>
+  <text x="520" y="20" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="10" font-weight="700" fill="#a78bfa" letter-spacing="2">⬡ MICROSOFT FOUNDRY IQ — ETHICAL REASONING KNOWLEDGE GRAPH</text>
+  <text x="180" y="46" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="11" fill="#e2e8f0"><tspan font-weight="700" fill="#a78bfa">5</tspan> Ethical Principles</text>
+  <text x="380" y="46" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="11" fill="#e2e8f0"><tspan font-weight="700" fill="#a78bfa">3</tspan> Fairness Metrics</text>
+  <text x="600" y="46" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="11" fill="#e2e8f0"><tspan font-weight="700" fill="#a78bfa">6</tspan> Contextual Rules</text>
+  <text x="850" y="46" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="11" fill="#e2e8f0"><tspan font-weight="700" fill="#a78bfa">6</tspan> Mitigation Strategies</text>
+  <text x="520" y="62" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="9" fill="#64748b" font-style="italic">Non-Discrimination · Growth Equity · Transparency · Human Oversight · Age Inclusivity</text>
+</g>
+
+<!-- KG arrow to Agent 2 -->
+<line x1="600" y1="450" x2="600" y2="420" stroke="#a78bfa" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arr)"/>
+
+<!-- Output box -->
+<rect x="280" y="560" width="640" height="86" rx="10" fill="rgba(74,222,128,0.06)" stroke="rgba(74,222,128,0.4)" stroke-width="1.5"/>
+<text x="600" y="582" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="10" font-weight="700" fill="#4ade80" letter-spacing="2">📋 RESPONSIBLE AI SUMMARY → STAKEHOLDERS</text>
+<text x="600" y="602" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="11" fill="#e2e8f0">Executive Verdict · Plain-language findings · Counterfactual scenarios</text>
+<text x="600" y="620" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="11" fill="#e2e8f0">Prioritised action plan · Affected employees flagged for review</text>
+<text x="600" y="638" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="9" fill="#64748b" font-style="italic">HR · L&amp;D · Compliance · Legal — humans make all final decisions</text>
+
+<line x1="600" y1="520" x2="600" y2="558" stroke="#4ade80" stroke-width="2" marker-end="url(#arrG)"/>
+
+<!-- Metrics bar -->
+<rect x="80" y="678" width="1040" height="60" rx="10" fill="rgba(15,15,30,0.6)" stroke="rgba(99,102,241,0.15)" stroke-width="1"/>
+<text x="160" y="700" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="20" font-weight="800" fill="#a78bfa">4</text>
+<text x="160" y="722" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="9" fill="#94a3b8" letter-spacing="1">AI AGENTS</text>
+<text x="320" y="700" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="20" font-weight="800" fill="#60a5fa">5</text>
+<text x="320" y="722" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="9" fill="#94a3b8" letter-spacing="1">ETHICAL PRINCIPLES</text>
+<text x="480" y="700" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="20" font-weight="800" fill="#4ade80">6</text>
+<text x="480" y="722" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="9" fill="#94a3b8" letter-spacing="1">CONTEXTUAL RULES</text>
+<text x="640" y="700" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="20" font-weight="800" fill="#fbbf24">6</text>
+<text x="640" y="722" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="9" fill="#94a3b8" letter-spacing="1">MITIGATIONS</text>
+<text x="800" y="700" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="20" font-weight="800" fill="#ec4899">78</text>
+<text x="800" y="722" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="9" fill="#94a3b8" letter-spacing="1">EVAL TESTS · 100%</text>
+<text x="980" y="700" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="20" font-weight="800" fill="#06b6d4">&lt;50ms</text>
+<text x="980" y="722" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="9" fill="#94a3b8" letter-spacing="1">PIPELINE TIME</text>
+
+<!-- Built with GitHub Copilot badge -->
+<rect x="950" y="50" width="200" height="28" rx="14" fill="rgba(74,222,128,0.1)" stroke="#4ade80" stroke-width="1"/>
+<text x="1050" y="69" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="11" font-weight="600" fill="#4ade80">◈ BUILT WITH GITHUB COPILOT</text>
+
+<rect x="2" y="2" width="1196" height="776" rx="14" fill="none" stroke="rgba(167,139,250,0.15)" stroke-width="2"/>
+</svg>
+</body></html>
