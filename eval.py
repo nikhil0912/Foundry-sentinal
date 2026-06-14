@@ -274,6 +274,12 @@ check("Executive verdict > 100 chars",
       len(trans_result["executive_verdict"]) > 100)
 check("Humanised findings present",
       len(trans_result["humanised_findings"]) >= 3)
+check("verdict_source field present",
+      trans_result.get("verdict_source") in ["templated", "foundry_iq_llm"])
+check("llm_powered flag is boolean",
+      isinstance(trans_result.get("llm_powered"), bool))
+check("citation mentions Foundry / GitHub Models",
+      "Foundry" in trans_result["citation"] or "Models" in trans_result["citation"])
 
 # Each humanised finding has all required fields
 for h in trans_result["humanised_findings"]:
@@ -353,6 +359,41 @@ a1 = run_audit(p1)
 a2 = run_audit(p2)
 check("Audit deterministic",
       a1["risk_assessment"] == a2["risk_assessment"])
+
+
+# ── LLM CLIENT (Azure AI Foundry / GitHub Models) ──────────────
+print("\n" + "=" * 60)
+print("LLM CLIENT — Foundry IQ Integration")
+print("=" * 60)
+
+from llm_client import (
+    is_llm_available,
+    synthesize_executive_verdict,
+    GITHUB_MODELS_ENDPOINT,
+    DEFAULT_MODEL,
+)
+
+check("LLM client module imports", True)
+check("GITHUB_MODELS_ENDPOINT points to Azure AI Inference",
+      "models.inference.ai.azure.com" in GITHUB_MODELS_ENDPOINT)
+check("Default model is gpt-4o-mini",
+      DEFAULT_MODEL == "gpt-4o-mini")
+check("is_llm_available returns bool",
+      isinstance(is_llm_available(), bool))
+
+# Graceful fallback test
+verdict, source = synthesize_executive_verdict(
+    risk_level="CRITICAL",
+    risk_score=100,
+    violations=[],
+    principles_touched=["P01"],
+    counterfactuals=[],
+)
+check("synthesize_executive_verdict returns source label",
+      source in ["templated", "foundry_iq_llm"])
+check("synthesize_executive_verdict gracefully handles no token",
+      (not is_llm_available() and verdict is None and source == "templated")
+      or (is_llm_available() and verdict is not None))
 
 
 # ── SUMMARY ─────────────────────────────────────────────────────
